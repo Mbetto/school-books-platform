@@ -1,0 +1,26 @@
+// _base.scss
+body {
+  font-family: font-family('base');
+  line-height: line-height('normal');
+  color: color('text');
+  background-color: color('background');
+  transition: $transition-base;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  &.dark-theme {
+    color: color('text', $dark-theme-colors);
+    background-color: color('background', $dark-theme-colors);
+  }
+  
+  @include dark-mode {
+    color: color('text', $dark-theme-colors);
+    background-color: color('background', $dark-theme-colors);
+  }
+  
+  @media print {
+    background: white !important;
+    color: black !important;
+  }
+}

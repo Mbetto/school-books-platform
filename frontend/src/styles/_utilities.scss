@@ -1,0 +1,189 @@
+// Utility Classes
+
+// Text Utilities
+.text {
+  @each $align in (left, center, right, justify) {
+    &-#{$align} {
+      text-align: $align;
+    }
+  }
+  
+  @each $weight, $value in $font-weights {
+    &-#{$weight} {
+      font-weight: $value;
+    }
+  }
+  
+  @each $color, $value in $colors {
+    &-#{$color} {
+      color: $value;
+    }
+  }
+  
+  &-uppercase { text-transform: uppercase; }
+  &-lowercase { text-transform: lowercase; }
+  &-capitalize { text-transform: capitalize; }
+  &-underline { text-decoration: underline; }
+  &-strike { text-decoration: line-through; }
+  &-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  // Responsive text utilities
+  @each $breakpoint, $width in $breakpoints {
+    @include respond-to($breakpoint) {
+      @each $align in (left, center, right, justify) {
+        &-#{$breakpoint}-#{$align} {
+          text-align: $align;
+        }
+      }
+      
+      &-#{$breakpoint}-truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+// Spacing Utilities
+@each $side in (top, right, bottom, left) {
+  @each $size, $value in $spacings {
+    .m#{str-slice($side, 0, 1)}-#{$size} {
+      margin-#{$side}: $value;
+    }
+    
+    .p#{str-slice($side, 0, 1)}-#{$size} {
+      padding-#{$side}: $value;
+    }
+    
+    // Responsive margins and paddings
+    @each $breakpoint, $width in $breakpoints {
+      @include respond-to($breakpoint) {
+        .m#{str-slice($side, 0, 1)}-#{$breakpoint}-#{$size} {
+          margin-#{$side}: $value;
+        }
+        
+        .p#{str-slice($side, 0, 1)}-#{$breakpoint}-#{$size} {
+          padding-#{$side}: $value;
+        }
+      }
+    }
+  }
+  
+  // Auto margins
+  .m#{str-slice($side, 0, 1)}-auto {
+    margin-#{$side}: auto;
+  }
+}
+
+// Display Utilities
+.d {
+  @each $display in (none, inline, inline-block, block, flex, grid, table, table-row, table-cell) {
+    &-#{$display} {
+      display: $display;
+    }
+    
+    // Responsive display classes
+    @each $breakpoint, $width in $breakpoints {
+      @include respond-to($breakpoint) {
+        &-#{$breakpoint}-#{$display} {
+          display: $display;
+        }
+      }
+    }
+  }
+}
+
+// Flex Utilities
+.flex {
+  @each $direction in (row, row-reverse, column, column-reverse) {
+    &-#{$direction} {
+      flex-direction: $direction;
+    }
+  }
+  
+  @each $justify in (start, end, center, between, around, evenly) {
+    &-justify-#{$justify} {
+      @if $justify == start { justify-content: flex-start; }
+      @else if $justify == end { justify-content: flex-end; }
+      @else { justify-content: $justify; }
+    }
+  }
+  
+  @each $align in (start, end, center, baseline, stretch) {
+    &-align-#{$align} {
+      @if $align == start { align-items: flex-start; }
+      @else if $align == end { align-items: flex-end; }
+      @else { align-items: $align; }
+    }
+  }
+  
+  &-wrap { flex-wrap: wrap; }
+  &-nowrap { flex-wrap: nowrap; }
+  &-wrap-reverse { flex-wrap: wrap-reverse; }
+}
+
+// Grid Utilities
+.grid {
+  display: grid;
+  
+  @for $i from 1 through 12 {
+    &-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+  }
+  
+  @each $breakpoint, $width in $breakpoints {
+    @include respond-to($breakpoint) {
+      @for $i from 1 through 12 {
+        &-cols-#{$breakpoint}-#{$i} {
+          grid-template-columns: repeat($i, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+}
+
+// Visibility Utilities
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+// Cursor Utilities
+.cursor {
+  @each $type in (pointer, default, text, move, not-allowed, help, wait) {
+    &-#{$type} {
+      cursor: $type;
+    }
+  }
+}
+
+// Overflow Utilities
+.overflow {
+  &-auto { overflow: auto; }
+  &-hidden { overflow: hidden; }
+  &-visible { overflow: visible; }
+  &-scroll { overflow: scroll; }
+  
+  &-x-auto { overflow-x: auto; }
+  &-y-auto { overflow-y: auto; }
+}
+
+// Position Utilities
+.position {
+  &-relative { position: relative; }
+  &-absolute { position: absolute; }
+  &-fixed { position: fixed; }
+  &-sticky { position: sticky; }
+  &-static { position: static; }
+}
+
+// Z-index Utilities
+@for $i from 0 through 10 {
+  .z-#{$i} {
+    z-index: $i;
+  }
+}

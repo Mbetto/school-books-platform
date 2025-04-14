@@ -1,0 +1,25 @@
+// Styles for the Input component
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        border-color: #007bff;
+    }
+
+    &--error {
+        border-color: #dc3545;
+    }
+
+    &--disabled {
+        background-color: #f8f9fa;
+        cursor: not-allowed;
+    }
+}

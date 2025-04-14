@@ -1,0 +1,29 @@
+/* Vendor Overrides */
+
+/* Bootstrap Overrides */
+.btn {
+    background-color: color('primary') !important;
+    border-color: color('primary-dark') !important;
+    color: contrast-color(color('primary')) !important;
+    @include transition(background-color, border-color);
+  
+    &:hover {
+      background-color: color('primary-dark') !important;
+      border-color: color.adjust(color('primary-dark'), $lightness: -10%) !important;
+    }
+  }
+  
+  /* Dark theme adjustments */
+  .dark-theme {
+    .btn {
+      background-color: color('primary', $dark-theme-colors) !important;
+      border-color: color('primary-dark', $dark-theme-colors) !important;
+      color: contrast-color(color('primary', $dark-theme-colors)) !important;
+  
+      &:hover {
+        background-color: color('primary-dark', $dark-theme-colors) !important;
+      }
+    }
+  }
+  
+  /* Add more overrides as needed */

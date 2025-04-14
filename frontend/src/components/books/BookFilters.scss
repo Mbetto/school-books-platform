@@ -1,0 +1,47 @@
+.book-filters {
+    .MuiAccordion-root {
+      box-shadow: none;
+      border: 1px solid var(--border-color);
+      border-radius: 8px !important;
+      margin-bottom: 16px;
+      overflow: hidden;
+      
+      &:before {
+        display: none;
+      }
+  
+      .MuiAccordionSummary-root {
+        background-color: var(--bg-color);
+        border-bottom: 1px solid var(--border-color);
+      }
+  
+      .MuiAccordionDetails-root {
+        padding: 16px;
+      }
+    }
+  
+    .MuiChip-root {
+      transition: all 0.2s ease;
+      
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+  
+    .MuiSlider-root {
+      color: var(--primary-color);
+    }
+  
+    .MuiToggleButtonGroup-root {
+      background-color: var(--bg-color);
+      
+      .MuiToggleButton-root {
+        border-color: var(--border-color);
+        
+        &.Mui-selected {
+          background-color: var(--primary-color);
+          color: white;
+        }
+      }
+    }
+  }

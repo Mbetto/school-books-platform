@@ -1,0 +1,120 @@
+// Typography Scale
+$type-scale: (
+  h1: xxxl,
+  h2: xxl,
+  h3: xl,
+  h4: lg,
+  h5: md,
+  h6: base,
+  p: base,
+  small: sm
+);
+
+// Heading Styles
+@each $element, $size in $type-scale {
+  #{$element} {
+    font-family: font-family(heading);
+    font-weight: font-weight(bold);
+    line-height: line-height(tight);
+    margin-bottom: spacing(md);
+    color: inherit;
+    
+    @if $element == h1 {
+      margin-top: 0;
+      line-height: line-height(tightest);
+    }
+    
+    @if $element == p {
+      font-family: font-family(base);
+      font-weight: font-weight(normal);
+      line-height: line-height(normal);
+    }
+    
+    @if $element == small {
+      display: inline-block;
+      font-family: font-family(base);
+    }
+    
+    @include font-size($size);
+  }
+}
+
+// Text Elements
+p {
+  margin-bottom: spacing(sm);
+  max-width: 65ch; // Optimal line length for readability
+}
+
+a {
+  color: color(primary);
+  text-decoration: none;
+  transition: color $transition-base;
+  cursor: pointer;
+  
+  &:hover {
+    color: color(primary-dark);
+    text-decoration: underline;
+  }
+  
+  .dark-theme & {
+    color: lighten(color(primary), 15%);
+    
+    &:hover {
+      color: lighten(color(primary), 25%);
+    }
+  }
+}
+
+// Blockquote
+blockquote {
+  padding-left: spacing(md);
+  margin: spacing(md) 0;
+  border-left: 3px solid color(primary);
+  font-style: italic;
+  
+  p {
+    margin-bottom: 0;
+  }
+}
+
+// Code
+pre, code {
+  font-family: monospace;
+  background-color: rgba(color(primary), 0.1);
+  border-radius: 3px;
+}
+
+pre {
+  padding: spacing(md);
+  overflow-x: auto;
+  
+  code {
+    background-color: transparent;
+  }
+}
+
+code {
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+}
+
+// Responsive Typography
+@each $breakpoint, $width in $breakpoints {
+  @include respond-to($breakpoint) {
+    html {
+      font-size: calc(16px + 0.2vw);
+    }
+    
+    @each $element, $size in $type-scale {
+      #{$element} {
+        @if $size == xxxl {
+          @include font-size(xxxl);
+        } @else if $size == xxl {
+          @include font-size(xxl);
+        } @else if $size == xl {
+          @include font-size(xl);
+        }
+      }
+    }
+  }
+}

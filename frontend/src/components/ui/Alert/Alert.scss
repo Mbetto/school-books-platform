@@ -1,0 +1,116 @@
+// Alert variables
+$alert-transition: all 0.3s ease;
+$alert-border-radius: 4px;
+
+.alert {
+  position: relative;
+  padding: 1rem;
+  border-radius: $alert-border-radius;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: $alert-transition;
+  opacity: 1;
+  transform: translateY(0);
+  margin-bottom: 1rem;
+  
+  // Alert types
+  &--success {
+    background-color: var(--alert-success-bg, #d4edda);
+    color: var(--alert-success-text, #155724);
+    border: 1px solid var(--alert-success-border, #c3e6cb);
+  }
+
+  &--error {
+    background-color: var(--alert-error-bg, #f8d7da);
+    color: var(--alert-error-text, #721c24);
+    border: 1px solid var(--alert-error-border, #f5c6cb);
+  }
+
+  &--warning {
+    background-color: var(--alert-warning-bg, #fff3cd);
+    color: var(--alert-warning-text, #856404);
+    border: 1px solid var(--alert-warning-border, #ffeeba);
+  }
+
+  &--info {
+    background-color: var(--alert-info-bg, #d1ecf1);
+    color: var(--alert-info-text, #0c5460);
+    border: 1px solid var(--alert-info-border, #bee5eb);
+  }
+
+  // Alert elements
+  &__icon {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__message {
+    flex: 1;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    margin-left: auto;
+    border-radius: 50%;
+    transition: $alert-transition;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px currentColor;
+    }
+  }
+
+  // Animation classes
+  &.alert-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  &.alert-exit {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+// Dark mode
+[data-theme='dark'] {
+  .alert {
+    &--success {
+      --alert-success-bg: #1a3a1f;
+      --alert-success-text: #d4edda;
+      --alert-success-border: #2a5a2f;
+    }
+
+    &--error {
+      --alert-error-bg: #3a1a1f;
+      --alert-error-text: #f8d7da;
+      --alert-error-border: #4a2a2f;
+    }
+
+    &--warning {
+      --alert-warning-bg: #3a3a1a;
+      --alert-warning-text: #fff3cd;
+      --alert-warning-border: #4a4a2a;
+    }
+
+    &--info {
+      --alert-info-bg: #1a3a3a;
+      --alert-info-text: #d1ecf1;
+      --alert-info-border: #2a4a4a;
+    }
+  }
+}

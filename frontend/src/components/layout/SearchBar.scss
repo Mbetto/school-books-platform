@@ -1,0 +1,84 @@
+/**
+ * Searchbar component styles with theme support
+ * Includes responsive behavior and focus states
+ */
+
+ .searchbar {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: var(--space-xs) var(--space-sm);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid transparent;
+  
+    &:focus-within {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2);
+    }
+  
+    &__input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: var(--space-sm);
+      color: inherit;
+      font-size: 0.95rem;
+      
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    &__button {
+      background: none;
+      border: none;
+      color: inherit;
+      padding: var(--space-xs);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        color: var(--secondary-color);
+        transform: scale(1.1);
+      }
+      
+      .icon {
+        font-size: 1.2rem;
+      }
+    }
+  
+    // Light theme variant (when used in non-header areas)
+    &--light {
+      background-color: var(--surface-color);
+      color: var(--text-color);
+      
+      .searchbar__input::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+      }
+      
+      &:focus-within {
+        background-color: var(--surface-color);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(106, 27, 154, 0.2);
+      }
+    }
+  
+    @media (max-width: 480px) {
+      max-width: 100%;
+      
+      &__input {
+        padding: var(--space-xs);
+      }
+    }
+  }

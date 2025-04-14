@@ -1,0 +1,151 @@
+// functions.scss
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'colors' as *;
+@use 'fonts' as *;
+@use 'spacings' as *;
+@use 'shadows' as *;
+@use 'z-index' as *;
+/// Get color from color map
+/// @param {String} $key - Color key
+/// @param {Map} $map - Color map ($colors by default)
+/// @return {Color} - Color value
+@function color($key, $map: $colors) {
+  @if not map-has-key($map, $key) {
+    @warn "Color `#{$key}` not found in #{inspect($map)}";
+    @return inherit;
+  }
+  @return map-get($map, $key);
+}
+
+/// Get font family from font families map
+/// @param {String} $key - Font family key
+/// @return {String} - Font family stack
+@function font-family($key) {
+  @if not map-has-key($font-families, $key) {
+    @warn "Font family `#{$key}` not found";
+    @return sans-serif;
+  }
+  @return map-get($font-families, $key);
+}
+
+/// Get font weight from font weights map
+/// @param {String} $key - Font weight key
+/// @return {Number} - Font weight value
+@function font-weight($key) {
+  @if not map-has-key($font-weights, $key) {
+    @warn "Font weight `#{$key}` not found";
+    @return 400;
+  }
+  @return map-get($font-weights, $key);
+}
+
+/// Get spacing value from spacings map
+/// @param {String} $key - Spacing key
+/// @return {Number} - Spacing value
+@function spacing($key) {
+  @if not map-has-key($spacings, $key) {
+    @warn "Spacing `#{$key}` not found";
+    @return 1rem;
+  }
+  @return map-get($spacings, $key);
+}
+
+/// Get line height value
+/// @param {String} $key - Line height key
+/// @return {Number} - Line height value
+@function line-height($key) {
+  $line-heights: (
+    tightest: 1,
+    tighter: 1.1,
+    tight: 1.2,
+    normal: 1.5,
+    loose: 1.8,
+    looser: 2,
+    loosest: 2.4
+  );
+  
+  @if not map-has-key($line-heights, $key) {
+    @warn "Line height `#{$key}` not found";
+    @return 1.5;
+  }
+  @return map-get($line-heights, $key);
+}
+
+/// Get z-index value from z-index map
+/// @param {String} $key - Z-index key
+/// @return {Number} - Z-index value
+@function z-index($key) {
+  @if not map-has-key($z-index, $key) {
+    @warn "Z-index `#{$key}` not found";
+    @return 0;
+  }
+  @return map-get($z-index, $key);
+}
+
+/// Get border radius value
+/// @param {String} $key - Border radius key
+/// @return {Number} - Border radius value
+@function border-radius($key) {
+  @if not map-has-key($border-radius, $key) {
+    @warn "Border radius `#{$key}` not found";
+    @return 0;
+  }
+  @return map-get($border-radius, $key);
+}
+
+/// Get shadow value
+/// @param {String} $key - Shadow key
+/// @return {String} - Shadow value
+@function shadow($key) {
+  @if not map-has-key($shadows, $key) {
+    @warn "Shadow `#{$key}` not found";
+    @return none;
+  }
+  @return map-get($shadows, $key);
+}
+
+/// Convert pixel value to rem
+/// @param {Number} $px - Pixel value
+/// @param {Number} $base - Base font size (default: 16px)
+/// @return {Number} - Rem value
+@function rem($px, $base: 16px) {
+  @return ($px / $base) * 1rem;
+}
+
+/// Tint a color by mixing it with white
+/// @param {Color} $color - Color to tint
+/// @param {Number} $percentage - Percentage of white to mix
+/// @return {Color} - Tinted color
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Shade a color by mixing it with black
+/// @param {Color} $color - Color to shade
+/// @param {Number} $percentage - Percentage of black to mix
+/// @return {Color} - Shaded color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+/// Check if color is light
+/// @param {Color} $color - Color to check
+/// @return {Boolean} - True if color is light
+@function is-light($color) {
+  @return lightness($color) > 50%;
+}
+
+/// Check if color is dark
+/// @param {Color} $color - Color to check
+/// @return {Boolean} - True if color is dark
+@function is-dark($color) {
+  @return not is-light($color);
+}
+
+/// Get contrast color (black or white) based on color lightness
+/// @param {Color} $color - Color to get contrast for
+/// @return {Color} - Black or white
+@function contrast-color($color) {
+  @return if(is-light($color), #000, #fff);
+}

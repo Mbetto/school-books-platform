@@ -1,0 +1,122 @@
+// Input variables
+$input-border-radius: 4px;
+$input-transition: all 0.2s ease;
+$input-padding: 0.75rem 1rem;
+$input-border: 1px solid #ced4da;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  &__label {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--input-label-color, #495057);
+  }
+
+  &__required {
+    color: var(--input-error-color, #dc3545);
+    margin-left: 0.25rem;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    background-color: var(--input-bg, #fff);
+    transition: $input-transition;
+
+    &:focus-within {
+      border-color: var(--input-focus-color, #80bdff);
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    &--error {
+      border-color: var(--input-error-color, #dc3545);
+
+      &:focus-within {
+        border-color: var(--input-error-color, #dc3545);
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+      }
+    }
+
+    &--success {
+      border-color: var(--input-success-color, #28a745);
+
+      &:focus-within {
+        border-color: var(--input-success-color, #28a745);
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+      }
+    }
+
+    &--disabled {
+      background-color: var(--input-disabled-bg, #e9ecef);
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    color: var(--input-icon-color, #6c757d);
+  }
+
+  &__field {
+    flex: 1;
+    padding: $input-padding;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--input-text-color, #495057);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    min-width: 0;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: var(--input-placeholder-color, #6c757d);
+      opacity: 1;
+    }
+  }
+
+  &__helper-text,
+  &__error-message,
+  &__success-message {
+    margin: 0.25rem 0 0;
+    font-size: 0.75rem;
+  }
+
+  &__helper-text {
+    color: var(--input-helper-text-color, #6c757d);
+  }
+
+  &__error-message {
+    color: var(--input-error-color, #dc3545);
+  }
+
+  &__success-message {
+    color: var(--input-success-color, #28a745);
+  }
+}
+
+// Dark mode
+[data-theme='dark'] {
+  .input {
+    --input-bg: #2d3748;
+    --input-text-color: #e2e8f0;
+    --input-border-color: #4a5568;
+    --input-label-color: #e2e8f0;
+    --input-placeholder-color: #a0aec0;
+    --input-icon-color: #a0aec0;
+    --input-helper-text-color: #a0aec0;
+  }
+}

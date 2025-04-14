@@ -1,0 +1,71 @@
+/* Profile.scss */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.profile-header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.profile-details {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.profile-details .detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.profile-details .detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.profile-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.profile-actions .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions .btn-edit {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.profile-actions .btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.profile-actions .btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.profile-actions .btn-delete:hover {
+    background-color: #a71d2a;
+}

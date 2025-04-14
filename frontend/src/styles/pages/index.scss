@@ -1,0 +1,29 @@
+// Auth Pages
+@import '../../pages/Auth/LoginPage';
+@import '../../pages/Auth/RegisterPage';
+@import '../../pages/Auth/ForgotPassword';
+@import '../../pages/Auth/ResetPassword';
+@import '../../pages/Auth/VerifyEmail';
+
+// Book Pages
+@import '../../pages/Books/BookDetail';
+@import '../../pages/Books/BooksPage';
+@import '../../pages/Books/BookCard';
+
+// Payment Pages
+@import '../../pages/Payment/PaymentPage';
+@import '../../pages/Payment/PaymentSuccess';
+@import '../../pages/Payment/PaymentFailed';
+@import '../../pages/Payment/PaymentStatus';
+@import '../../pages/Payment/PaymentHistory';
+@import '../../pages/Payment/PaymentLayout';
+
+// Profile Pages
+@import '../../pages/Profile/ProfilePage';
+@import '../../pages/Profile/SettingsPages';
+@import '../../pages/Profile/OrderHistoryPage';
+
+// Other Pages
+@import '../../pages/Home/HomePage';
+@import '../../pages/Cart/Cart';
+@import '../../pages/NotFoundPage';

@@ -1,0 +1,36 @@
+// Navigation.scss
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #dee2e6;
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+        text-decoration: none;
+
+        &:hover {
+            color: #007bff;
+        }
+    }
+
+    .menu {
+        display: flex;
+        gap: 1.5rem;
+
+        .menu-item {
+            font-size: 1rem;
+            color: #495057;
+            text-decoration: none;
+
+            &:hover {
+                color: #007bff;
+            }
+        }
+    }
+}

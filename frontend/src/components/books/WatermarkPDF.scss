@@ -1,0 +1,84 @@
+// WatermarkPDF.scss
+.watermark-pdf {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-color);
+  
+    .pdf-container {
+      position: relative;
+      width: 100%;
+      min-height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border-color);
+    }
+  
+    .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      font-size: 3rem;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10;
+      opacity: 0.15;
+      width: 100%;
+      text-align: center;
+  
+      &.dark {
+        color: rgba(255, 255, 255, 0.2);
+      }
+  
+      &.light {
+        color: rgba(0, 0, 0, 0.15);
+      }
+    }
+  
+    .preview-overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4757;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      transform: none;
+      z-index: 11;
+      pointer-events: none;
+    }
+  
+    .pdf-loading, .pdf-error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+  
+    .pdf-error {
+      color: #ff4757;
+    }
+  
+    .react-pdf__Page {
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .react-pdf__Page__canvas {
+      margin: 0 auto;
+    }
+  }

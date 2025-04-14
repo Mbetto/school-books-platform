@@ -1,0 +1,47 @@
+/* Styles for the Books page */
+
+.books-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+
+    .books-header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .book-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        .book-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            .book-title {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 10px;
+                color: #555;
+            }
+
+            .book-author {
+                font-size: 14px;
+                color: #777;
+                margin-bottom: 10px;
+            }
+
+            .book-description {
+                font-size: 12px;
+                color: #999;
+                line-height: 1.5;
+            }
+        }
+    }
+}

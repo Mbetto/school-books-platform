@@ -1,0 +1,110 @@
+/**
+ * Global layout styles with theme support
+ * Includes responsive layout structure and variables
+ */
+
+// Theme variables with educational platform colors
+:root {
+  // Light theme (default)
+  --bg-color: #ffffff;
+  --text-color: #2d3748;
+  --primary-color: #6a1b9a;       // School purple
+  --secondary-color: #ff9800;     // Accent orange
+  --border-color: #e2e8f0;
+  --surface-color: #f8f9fa;
+  
+  // Header
+  --header-height: 70px;
+  --header-bg: var(--primary-color);
+  --header-text: #ffffff;
+  
+  // Footer
+  --footer-bg: var(--primary-color);
+  --footer-text: #ffffff;
+  
+  // Sidebar
+  --sidebar-width: 280px;
+  --sidebar-bg: #f8f5ff;
+  --sidebar-text: var(--text-color);
+  
+  // Mobile Navigation
+  --mobile-nav-bg: var(--bg-color);
+  --mobile-nav-text: var(--text-color);
+  
+  // Shadows
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  // Spacing
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+}
+
+// Dark theme
+[data-theme="dark"] {
+  --bg-color: #1a202c;
+  --text-color: #f7fafc;
+  --primary-color: #9c27b0;
+  --secondary-color: #ffb74d;
+  --border-color: #2d3748;
+  --surface-color: #2d3748;
+  
+  --sidebar-bg: #2d1b3a;
+  --sidebar-text: #f7fafc;
+}
+
+// Base layout
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.main-wrapper {
+  display: flex;
+  flex: 1;
+  padding-top: var(--header-height);
+}
+
+.content {
+  flex: 1;
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+  
+  .content {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-height: 60px;
+    --space-lg: 1rem;
+  }
+  
+  .content {
+    padding: var(--space-sm);
+  }
+}

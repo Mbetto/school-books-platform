@@ -1,0 +1,261 @@
+.quiz-widget {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .quiz-header {
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+
+        .quiz-progress {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+
+            .progress-bar {
+                height: 100%;
+                background: white;
+                transition: width 0.3s ease;
+            }
+        }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+    }
+
+    .quiz-content {
+        padding: 1.5rem;
+        flex: 1;
+
+        .quiz-question {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-image {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 0.75rem;
+
+            .quiz-option {
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                background: #f8fafc;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.2s;
+                border: 1px solid #e2e8f0;
+
+                &:hover {
+                    background: #f1f5f9;
+                    transform: translateX(2px);
+                }
+
+                &.selected {
+                    background: #e0f2fe;
+                    border-color: #7dd3fc;
+                }
+
+                .option-selector {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: #e2e8f0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 1rem;
+                    font-weight: 500;
+                    color: #64748b;
+                    flex-shrink: 0;
+                }
+
+                &.selected .option-selector {
+                    background: #0ea5e9;
+                    color: white;
+                }
+
+                .option-text {
+                    flex: 1;
+                    color: #1e293b;
+                }
+
+                .option-image {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    margin-left: 1rem;
+                    flex-shrink: 0;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    .quiz-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: flex-end;
+
+        .quiz-submit {
+            padding: 0.75rem 1.5rem;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+                background: #4338ca;
+                transform: translateY(-1px);
+            }
+
+            &:disabled {
+                background: #c7d2fe;
+                cursor: not-allowed;
+                transform: none;
+            }
+        }
+    }
+}
+
+.quiz-start-screen {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    h2 {
+        color: #1e293b;
+        margin-bottom: 1rem;
+    }
+
+    .quiz-description {
+        color: #64748b;
+        margin-bottom: 1.5rem;
+    }
+
+    .quiz-meta {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+
+    .start-quiz-button {
+        padding: 0.75rem 2rem;
+        background: #4f46e5;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.quiz-results {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    h2 {
+        color: #1e293b;
+        margin-bottom: 1rem;
+    }
+
+    .result-score {
+        font-size: 1.1rem;
+        color: #64748b;
+        margin-bottom: 0.5rem;
+    }
+
+    .result-percentage {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4f46e5;
+        margin-bottom: 1rem;
+    }
+
+    .result-feedback {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+
+        .perfect {
+            color: #10b981;
+        }
+
+        .good {
+            color: #f59e0b;
+        }
+
+        .improve {
+            color: #ef4444;
+        }
+    }
+
+    .retry-button {
+        padding: 0.75rem 2rem;
+        background: #e0e7ff;
+        color: #4f46e5;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background: #c7d2fe;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

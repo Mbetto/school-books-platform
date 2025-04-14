@@ -1,0 +1,90 @@
+// HomePage.scss
+
+// Import variables
+@import './variables';
+
+// Home Page Styles
+.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .hero-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+
+  .book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .book-item {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .book-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .book-info {
+        padding: 1.5rem;
+
+        .title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+          color: $text-color;
+        }
+
+        .author {
+          font-size: 1rem;
+          color: lighten($text-color, 20%);
+          margin-bottom: 1rem;
+        }
+
+        .price {
+          font-weight: bold;
+          color: map-get($colors, primary);
+        }
+      }
+    }
+  }
+}

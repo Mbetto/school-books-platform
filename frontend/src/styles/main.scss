@@ -1,0 +1,256 @@
+// =============================================
+// 1. FOUNDATION & SETTINGS
+// =============================================
+@use 'variables' as *;
+@use 'functions' as *;
+@use 'mixins' as *;
+@use 'reset';
+@use 'base';
+@use 'typography';
+@use 'utilities';
+
+// =============================================
+// 2. THEMES & MODES
+// =============================================
+@use 'themes';
+@use 'dark-mode';
+@use 'purple-theme';
+
+// =============================================
+// 3. VENDOR OVERRIDES
+// =============================================
+@use 'vendor-overrides';
+
+// =============================================
+// 4. COMPONENTS
+// =============================================
+// UI Components
+@use '../components/ui/Button/button' as button;
+@use '../components/ui/Input/input' as input;
+@use '../components/ui/Card/card' as card;
+@use '../components/ui/Modal/modal' as modal;
+@use '../components/ui/Alert/alert' as alert;
+
+// Layout Components
+@use '../components/layout/Header' as header;
+@use '../components/layout/Footer' as footer;
+@use '../components/layout/Sidebar' as sidebar;   
+@use '../components/layout/Navigation' as navigation;
+@use '../components/layout/Layout' as layout;
+@use '../components/layout/Loader' as loader;
+@use '../components/layout/MobileNavigation' as mobile-nav;
+@use '../components/layout/SearchBar' as search-bar;
+
+// =============================================
+// 5. PAGES
+// =============================================
+// Auth Pages
+@use '../pages/Auth/LoginPage' as login-page;
+@use '../pages/Auth/RegisterPage' as register-page;
+@use '../pages/Auth/ForgotPassword' as forgot-password;
+@use '../pages/Auth/ResetPassword' as reset-password;
+@use '../pages/Auth/VerifyEmail' as verify-email;
+
+// Book Pages
+@use '../pages/Books/BookDetail' as book-detail;
+@use '../pages/Books/BooksPage' as books-page;
+@use '../pages/Books/BookCard' as book-card;
+
+// Payment Pages
+@use '../pages/Payment/PaymentPage' as payment-page;
+@use '../pages/Payment/PaymentSuccess' as payment-success;
+@use '../pages/Payment/PaymentFailed' as payment-failed;
+@use '../pages/Payment/PaymentStatus' as payment-status;
+@use '../pages/Payment/PaymentHistory' as payment-history;
+@use '../pages/Payment/PaymentLayout' as payment-layout;
+
+// Profile Pages
+@use '../pages/Profile/ProfilePage' as profile-page;
+@use '../pages/Profile/SettingsPages' as settings-page;
+@use '../pages/Profile/OrderHistoryPage' as order-history;
+
+// Other Pages
+@use '../pages/Home/HomePage' as home-page;
+@use '../pages/Cart/Cart' as cart-page;
+@use '../pages/NotFoundPage' as not-found-page;
+
+// =============================================
+// 6. GLOBAL STYLES
+// =============================================
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  
+  @include respond-to('lg') {
+    font-size: 18px;
+  }
+}
+
+body {
+  font-family: font-family('base');
+  line-height: line-height('normal');
+  color: color('text');
+  background-color: color('background');
+  @include transition(color, background-color);
+  min-height: 100vh;
+  
+  &.dark-theme {
+    color: color('text', $dark-theme-colors);
+    background-color: color('background', $dark-theme-colors);
+  }
+  
+  @include dark-mode {
+    color: color('text', $dark-theme-colors);
+    background-color: color('background', $dark-theme-colors);
+  }
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: font-family('heading');
+  font-weight: font-weight('bold');
+  line-height: line-height('tight');
+  margin-bottom: spacing('md');
+  color: inherit;
+}
+
+h1 { @include font-size('xxxl'); }
+h2 { @include font-size('xxl'); }
+h3 { @include font-size('xl'); }
+h4 { @include font-size('lg'); }
+h5 { @include font-size('md'); }
+h6 { @include font-size('base'); }
+
+p {
+  margin-bottom: spacing('sm');
+  line-height: line-height('normal');
+}
+
+a {
+  color: color('primary');
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: color('primary-dark');
+    text-decoration: underline;
+  }
+  
+  .dark-theme & {
+    color: color('primary-light');
+    
+    &:hover {
+      color: color('primary');
+    }
+  }
+}
+
+// Layout
+.app-container {
+  @include flex(column, flex-start, stretch);
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: spacing('lg');
+  
+  @include respond-to('md') {
+    padding: spacing('md');
+  }
+  
+  @include respond-to('sm') {
+    padding: spacing('sm');
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 spacing('md');
+  
+  @each $breakpoint, $width in $breakpoints {
+    @if $breakpoint != 'xs' {
+      &-#{$breakpoint} {
+        max-width: $width;
+      }
+    }
+  }
+}
+
+// Utility Classes
+.text {
+  @each $align in (left, center, right, justify) {
+    &-#{$align} {
+      text-align: $align;
+    }
+  }
+  
+  @each $weight, $value in $font-weights {
+    &-#{$weight} {
+      font-weight: $value;
+    }
+  }
+  
+  @each $color, $value in $colors {
+    &-#{$color} {
+      color: $value;
+    }
+  }
+}
+
+// Spacing utilities
+@each $side in (top, right, bottom, left) {
+  @each $size, $value in $spacings {
+    .m#{str-slice($side, 0, 1)}-#{$size} {
+      margin-#{$side}: $value;
+    }
+    
+    .p#{str-slice($side, 0, 1)}-#{$size} {
+      padding-#{$side}: $value;
+    }
+  }
+}
+
+// Display utilities
+.d {
+  @each $display in (none, inline, inline-block, block, flex, grid) {
+    &-#{$display} {
+      display: $display;
+    }
+  }
+}
+
+// Theme Classes
+.dark-theme {
+  background-color: color('background', $dark-theme-colors);
+  color: color('text', $dark-theme-colors);
+  
+  a {
+    color: color('primary-light');
+    
+    &:hover {
+      color: color('primary');
+    }
+  }
+}
+
+.reduced-motion {
+  @include reduced-motion {
+    animation: none;
+    transition: none;
+  }
+}
+
+// =============================================
+// 7. UTILITY CLASS GENERATION
+// =============================================
+@include generate-utility-classes;

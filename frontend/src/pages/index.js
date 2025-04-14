@@ -1,0 +1,16 @@
+export { default as HomePage } from './Home/HomePage';
+export { default as BooksPage } from './Books/BooksPage';
+export { default as BookDetailPage } from './Books/BookDetail';
+export { default as LoginPage } from './Auth/LoginPage';
+export { default as RegisterPage } from './Auth/RegisterPage';
+export { default as TutorDashboard } from './TutorDashboard';
+export { default as StudentDashboard } from './StudentDashboard';
+export { default as LiveSessionsPage } from './LiveSessions';
+export { default as PaymentPage } from './Payment/PaymentPage';
+export { default as PaymentSuccessPage } from './Payment/PaymentSuccess';
+export { default as PaymentFailedPage } from './Payment/PaymentFailed';
+export { default as ProfilePage } from './Profile/ProfilePage';
+export { default as OrderHistoryPage } from './Profile/OrderHistoryPage';
+export { default as SettingsPage } from './Profile/SettingsPages';
+export { default as CartPage } from './Cart/Cart';
+export { default as NotFoundPage } from './NotFoundPage';

@@ -1,0 +1,74 @@
+// Card variables
+$card-border-radius: 8px;
+$card-transition: all 0.3s ease;
+$card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$card-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg, #fff);
+  border-radius: $card-border-radius;
+  transition: $card-transition;
+  overflow: hidden;
+
+  // Card variants
+  &--default {
+    border: 1px solid var(--card-border, #e0e0e0);
+    box-shadow: $card-shadow;
+  }
+
+  &--primary {
+    border: 1px solid var(--card-primary-border, #b8daff);
+    background-color: var(--card-primary-bg, #f8f9fa);
+  }
+
+  &--flat {
+    border: 1px solid var(--card-border, #e0e0e0);
+    box-shadow: none;
+  }
+
+  &--hoverable {
+    &:hover {
+      box-shadow: $card-shadow-hover;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Card elements
+  &__header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--card-border, #e0e0e0);
+    background-color: var(--card-header-bg, #f8f9fa);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--card-title-color, #212529);
+  }
+
+  &__body {
+    padding: 1.25rem;
+    flex: 1;
+  }
+
+  &__footer {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--card-border, #e0e0e0);
+    background-color: var(--card-footer-bg, #f8f9fa);
+  }
+}
+
+// Dark mode
+[data-theme='dark'] {
+  .card {
+    --card-bg: #2d3748;
+    --card-border: #4a5568;
+    --card-header-bg: #1a202c;
+    --card-footer-bg: #1a202c;
+    --card-title-color: #fff;
+  }
+}

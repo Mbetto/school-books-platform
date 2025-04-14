@@ -1,0 +1,78 @@
+// SettingsPages.scss
+
+// Variables
+$primary-color: #4a90e2;
+$secondary-color: #f5f5f5;
+$text-color: #333;
+$border-radius: 4px;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Styles
+.settings-page {
+    background-color: $secondary-color;
+    color: $text-color;
+    padding: 20px;
+
+    .settings-header {
+        @include flex-center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: $primary-color;
+    }
+
+    .settings-form {
+        max-width: 600px;
+        margin: 0 auto;
+
+        .form-group {
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: $border-radius;
+                font-size: 1rem;
+
+                &:focus {
+                    border-color: $primary-color;
+                    outline: none;
+                }
+            }
+        }
+
+        .form-actions {
+            @include flex-center;
+            margin-top: 20px;
+
+            button {
+                background-color: $primary-color;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: $border-radius;
+                cursor: pointer;
+                font-size: 1rem;
+
+                &:hover {
+                    background-color: darken($primary-color, 10%);
+                }
+            }
+        }
+    }
+}

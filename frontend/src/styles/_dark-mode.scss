@@ -1,0 +1,58 @@
+// Dark Mode Styles
+.dark-theme {
+    background-color: color(background, $dark-theme-colors);
+    color: color(text, $dark-theme-colors);
+    transition: $transition-base;
+
+    a {
+        color: color(primary, $dark-theme-colors);
+        text-decoration: none;
+        transition: color $transition-base;
+
+        &:hover {
+            color: lighten(color(primary, $dark-theme-colors), 15%);
+        }
+    }
+
+    button {
+        background-color: darken(color(background, $dark-theme-colors), 5%);
+        color: color(text, $dark-theme-colors);
+        border: 1px solid color(primary, $dark-theme-colors);
+        transition: $transition-base;
+
+        &:hover {
+            background-color: color(primary, $dark-theme-colors);
+            border-color: lighten(color(primary, $dark-theme-colors), 10%);
+        }
+    }
+
+    input, textarea {
+        background-color: darken(color(background, $dark-theme-colors), 5%);
+        color: color(text, $dark-theme-colors);
+        border: 1px solid color(primary, $dark-theme-colors);
+        transition: $transition-base;
+
+        &:focus {
+            border-color: lighten(color(primary, $dark-theme-colors), 10%);
+            outline: none;
+        }
+    }
+
+    .card {
+        background-color: darken(color(background, $dark-theme-colors), 3%);
+        color: color(text, $dark-theme-colors);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar {
+        background-color: darken(color(background, $dark-theme-colors), 5%);
+        color: color(text, $dark-theme-colors);
+        border-bottom: 1px solid color(primary, $dark-theme-colors);
+    }
+
+    .footer {
+        background-color: darken(color(background, $dark-theme-colors), 8%);
+        color: color(text, $dark-theme-colors);
+        border-top: 1px solid color(primary, $dark-theme-colors);
+    }
+}

@@ -1,0 +1,82 @@
+.error-boundary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--error-bg, #f8f9fa);
+    color: var(--error-text, #495057);
+    font-family: var(--font-family-primary);
+  
+    .error-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      color: var(--error-icon, #dc3545);
+    }
+  
+    .error-message {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--error-heading, #212529);
+    }
+  
+    .error-details {
+      max-width: 800px;
+      width: 100%;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background-color: var(--error-details-bg, #e9ecef);
+      border-radius: 0.5rem;
+      text-align: left;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: var(--error-details-text, #495057);
+      overflow-x: auto;
+  
+      pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        margin-top: 0.5rem;
+      }
+    }
+  
+    .retry-button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--error-button-text, #fff);
+      background-color: var(--error-button-bg, #007bff);
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 1rem;
+  
+      &:hover {
+        background-color: var(--error-button-hover, #0056b3);
+      }
+  
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+    }
+  }
+  
+  // Dark mode support
+  [data-theme='dark'] {
+    .error-boundary {
+      --error-bg: #212529;
+      --error-text: #f8f9fa;
+      --error-heading: #fff;
+      --error-icon: #ff6b6b;
+      --error-details-bg: #343a40;
+      --error-details-text: #dee2e6;
+      --error-button-bg: #4dabf7;
+      --error-button-hover: #339af0;
+      --error-button-text: #1a1a1a;
+    }
+  }

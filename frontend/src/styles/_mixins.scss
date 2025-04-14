@@ -1,0 +1,150 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:list';
+@use 'variables' as *;
+@use 'functions' as *;
+
+/// Responsive breakpoint manager
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in $breakpoints map";
+  }
+}
+
+/// Flexbox shortcut
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/// Dark mode media query
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+/// Reduced motion media query
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+/// Font size helper
+@mixin font-size($size) {
+  @if map.has-key($font-sizes, $size) {
+    font-size: map.get($font-sizes, $size);
+  } @else {
+    @warn "Font size `#{$size}` not found in $font-sizes map";
+    font-size: 1rem;
+  }
+}
+
+/// Transition helper
+@mixin transition($properties...) {
+  @if length($properties) == 0 {
+    transition: $transition-base;
+  } @else {
+    $transition: ();
+    
+    @each $property in $properties {
+      $transition: list.append(
+        $transition,
+        #{$property} #{$transition-base},
+        $separator: comma
+      );
+    }
+
+    transition: $transition;
+  }
+}
+
+/// Position helper
+@mixin position($position, $args: null null null null) {
+  position: $position;
+  $offsets: top right bottom left;
+  
+  @for $i from 1 through length($args) {
+    $value: list.nth($args, $i);
+    @if $value != null {
+      #{list.nth($offsets, $i)}: $value;
+    }
+  }
+}
+
+/// Truncate text with ellipsis
+@mixin truncate($width: 100%, $line-clamp: null) {
+  width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  @if $line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: $line-clamp;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  } @else {
+    white-space: nowrap;
+  }
+}
+
+/// Button hover effect
+@mixin button-hover-effect($brightness: 90%) {
+  &:hover {
+    filter: brightness(#{$brightness});
+  }
+}
+
+/// Focus visible helper
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    @content;
+  }
+}
+
+/// Visually hidden helper
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Generate utility classes
+@mixin generate-utility-classes {
+  // Spacing utilities
+  @each $side in (top, right, bottom, left) {
+    @each $size, $value in $spacings {
+      .m#{str-slice($side, 0, 1)}-#{$size} {
+        margin-#{$side}: $value;
+      }
+      
+      .p#{str-slice($side, 0, 1)}-#{$size} {
+        padding-#{$side}: $value;
+      }
+    }
+  }
+
+  // Display utilities
+  @each $display in (none, inline, inline-block, block, flex, grid) {
+    .d-#{$display} {
+      display: $display;
+    }
+  }
+}

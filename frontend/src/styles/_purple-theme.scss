@@ -1,0 +1,56 @@
+@use 'sass:color';
+@use 'sass:map';
+
+
+// Purple Theme Classes
+.purple-theme {
+  background-color: map-get($purple-theme-colors, background);
+  color: darken(map-get($purple-theme-colors, text), 10%);
+  transition: $transition-base;
+
+  a {
+    color: map-get($purple-theme-colors, primary);
+    text-decoration: none;
+    transition: color $transition-base;
+
+    &:hover {
+      color: map-get($purple-theme-colors, dark);
+      text-decoration: underline;
+    }
+  }
+
+  button, .button {
+    background-color: map-get($purple-theme-colors, primary);
+    color: map-get($purple-theme-colors, text);
+    border: 1px solid map-get($purple-theme-colors, primary);
+    transition: $transition-base;
+
+    &:hover {
+      background-color: map-get($purple-theme-colors, dark);
+      border-color: map-get($purple-theme-colors, dark);
+    }
+
+    &:disabled {
+      background-color: map-get($purple-theme-colors, light);
+      cursor: not-allowed;
+    }
+  }
+
+  input, textarea, select {
+    background-color: lighten(map-get($purple-theme-colors, background), 5%);
+    color: darken(map-get($purple-theme-colors, text), 20%);
+    border: 1px solid map-get($purple-theme-colors, border);
+    transition: $transition-base;
+
+    &:focus {
+      border-color: map-get($purple-theme-colors, primary);
+      outline: none;
+    }
+  }
+
+  .card {
+    background-color: white;
+    border: 1px solid map-get($purple-theme-colors, border);
+    box-shadow: 0 2px 4px rgba(map-get($purple-theme-colors, dark), 0.1);
+  }
+}

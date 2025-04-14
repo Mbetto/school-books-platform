@@ -1,0 +1,65 @@
+// HomePage.scss
+
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$text-color: #333;
+$background-color: #f9f9f9;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Global Styles
+body {
+    font-family: 'Arial', sans-serif;
+    color: $text-color;
+    background-color: $background-color;
+    margin: 0;
+    padding: 0;
+}
+
+// Home Page Styles
+.home-page {
+    padding: 20px;
+
+    .header {
+        @include flex-center;
+        background-color: $primary-color;
+        color: #fff;
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    .content {
+        margin-top: 20px;
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            &:hover {
+                border-color: $secondary-color;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .title {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .description {
+                font-size: 1rem;
+                color: $text-color;
+            }
+        }
+    }
+}
